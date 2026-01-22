@@ -7,10 +7,9 @@
  *   - le mot clé "function" est interdit
  */
 
-const arrow1 =(x) => {
-    return x+1;
+const arrow1 = (a) => {
+    return a + 1;
 }
-
 
 
 /**
@@ -22,7 +21,7 @@ const arrow1 =(x) => {
  *   - le mot clé "return" est interdit
  */
 
-const arrow2 =(x) => x+1;
+const arrow2 = (a) => a + 1;
 
 
-module.exports = {arrow1, arrow2}; // Ici le nom des fonctions à utiliser dans l'ordre
+module.exports = { arrow1, arrow2 }; // Ici le nom des fonctions à utiliser dans l'ordre

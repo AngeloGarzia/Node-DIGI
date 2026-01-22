@@ -3,9 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const os = require('os');
 const dns = require('dns');
-
 const PORT = 3000;
-
+const platform = process.platform;
 /* =====================================================
    1. SERVEUR DE FICHIERS STATIQUES
 ===================================================== */
@@ -38,7 +37,9 @@ const sendStatus = () => {
     cpuLoad: Math.round(os.loadavg()[0] * 100),
     memFree: Math.round(os.freemem() / 1024 / 1024) + ' MB',
     memTotal: Math.round(os.totalmem() / 1024 / 1024) + ' MB',
-    uptime: Math.round(os.uptime() / 60) + ' min'
+    uptime: Math.round(os.uptime() / 60) + ' min',
+    platform
+
   })}\n\n`;
 
   for (const res of navigateurs) {
@@ -57,7 +58,7 @@ const statusHandler = (res) => {
   sendStatus();
 
   if (!statusInterval) {
-    statusInterval = setInterval(sendStatus, 1000);
+    statusInterval = setInterval(sendStatus, 1000); //refersh 1s
   }
 
   res.on('close', () => {
