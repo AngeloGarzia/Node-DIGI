@@ -12,7 +12,7 @@ router.get("/:id",courseController.getCourseById);
 router.get("/level/:level", courseController.getByLevel); 
 
 
-
+//routes authentifiées
 router.post("/", authMiddleware,courseController.createCourse);
 router.put("/:id",authMiddleware, courseController.updateCourse);
 router.delete("/:id",authMiddleware,courseController.deleteCourse);
