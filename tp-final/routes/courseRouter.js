@@ -9,6 +9,7 @@ const authMiddleware = require("../middlewares/authMiddleware");
 router.get('/level/:level',courseController.getByLevel);
 router.get("/", courseController.getAllCourse);
 router.get("/:id",courseController.getCourseById);
+router.get("/level/:level", courseController.getByLevel); 
 
 
 

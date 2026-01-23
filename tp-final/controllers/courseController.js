@@ -1,4 +1,6 @@
 const courseService = require('../services/courseService');
+const Course = require('../models/course');
+const Category = require('../models/category');
 
 
 
@@ -18,9 +20,9 @@ const getCourseById = async(req, res) => {
 
 const getByLevel = async (req, res) => {
   try {
-    const { level } = req.params; // "débutant"
+    const { level } = req.params;
     
-    const courses = await Course.findAll({
+    const course = await Course.findAll({
       where: { 
         level,  //
         published: true 
@@ -29,11 +31,11 @@ const getByLevel = async (req, res) => {
         model: Category,
         attributes: ['id', 'name']
       }],
-      order: [['title', 'ASC']] // Bonus
+      order: [['title', 'ASC']] 
     });
     
     res.json({
-      count: courses.length,
+      count: course.length,
       level,
       data: courses
     });

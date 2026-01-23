@@ -27,7 +27,5 @@ const Category = sequelize.define('Category', {
     tableName: 'category',
     timestamps: true,
 });
-const Course = require('./course');
-Category.hasMany(Course, { foreignKey: 'categoryId' });
 
 module.exports = Category;

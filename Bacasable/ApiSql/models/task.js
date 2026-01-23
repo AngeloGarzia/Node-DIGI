@@ -31,6 +31,7 @@ const Task = sequelize.define('Task', {
     tableName: 'tasks',
     timestamps: false
 });
+
 const List = require('./list'); 
 
 Task.belongsTo(List, { foreignKey: 'listId' });

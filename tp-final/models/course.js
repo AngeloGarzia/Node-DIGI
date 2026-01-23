@@ -2,6 +2,7 @@ const { DataTypes } = require('sequelize');
 const { sequelize } = require('../db/db');
 
 const Course = sequelize.define('Course', {
+
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -53,10 +54,10 @@ const Course = sequelize.define('Course', {
     tableName: 'course',
     timestamps: true,
 });
-
+// Relations
 const Category = require('./category'); 
-
-Course.belongsTo(Category, { foreignKey: 'categoryId' });
+Course.belongsTo(Category, { foreignKey: 'categoryId',as: 'category' });
+Category.hasMany(Course, { foreignKey: 'categoryId' ,as: 'course'});
 
 
 module.exports = Course;

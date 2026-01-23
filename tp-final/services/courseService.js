@@ -8,9 +8,16 @@ const courseService = {
     getCourseById: async (id) => {
         return await Course.findByPk(id);
     },
+    
+    getByLevel: async (level) => { 
+        return await Course.findAll({
+      where: { level, published: true },
+      include: [{ model: Category, attributes: ['id', 'name'] }],
+      order: [['title', 'ASC']]
+    });
+  },
 
     createCourse: async (data) => {
-        console.log("toto2")
         return await Course.create(data);
     },
 
